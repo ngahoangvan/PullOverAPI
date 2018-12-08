@@ -104,9 +104,8 @@ class AuthenticationResource(ModelResource):
                 user = User.objects.get(email=username)
                 username = user.username
             else:
-                raise CustomBadRequest(error_type='UNAUTHORIZED',
-                                       error_message='You were sign in by email,\
-                                       but email is not exist')
+                raise CustomBadRequest(error_type='DOES_NOT_EXITS',
+                                       error_message='You were sign in by email, but email is not exist')
         # Validate password
         validate_password(password)
 
@@ -139,8 +138,7 @@ class AuthenticationResource(ModelResource):
             return self.create_response(request, {'success': True})
         else:
             return self.create_response(request, {'success': False,
-                                                  'error_message': 'You are \
-                                                  not authenticated, %s' % request.user.is_authenticated})
+                                                  'error_message': 'You are not authenticated, %s' % request.user.is_authenticated})
 
     def sign_up(self, request, **kwargs):
         self.method_check(request, allowed=['post'])

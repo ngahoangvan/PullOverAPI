@@ -15,4 +15,3 @@ class UserObjectsOnlyAuthorization(Authorization):
 
     def delete_list(self, object_list, bundle):
         raise Unauthorized("Sorry, no deletes by bundle")
-
