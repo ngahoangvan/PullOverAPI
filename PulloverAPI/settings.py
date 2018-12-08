@@ -83,13 +83,24 @@ WSGI_APPLICATION = 'PulloverAPI.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'pull-over',
+#         'USER': 'postgres',
+#         'PASSWORD': '123123',
+#         'HOST': '',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pull-over',
-        'USER': 'postgres',
-        'PASSWORD': '123123',
-        'HOST': '',
+        'NAME': 'd3ksf4fifso0mt',
+        'USER': 'lmkllimxjrlkvm',
+        'PASSWORD': '6f3d0efc768c01b0109884aadff909aef9a5d7e579b118e972db7f9df5fff2ec',
+        'HOST': 'ec2-54-235-193-0.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
