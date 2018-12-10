@@ -8,7 +8,8 @@ from tastypie import fields
 from .models import (Categories,
                      GenericPull,
                      Colors,
-                     SpecificPull)
+                     SpecificPull,
+                     PullModel)
 
 
 class CategoriesResource(ModelResource):
@@ -44,4 +45,13 @@ class ColorsResource(ModelResource):
         resource_name = 'colors'
         include_resource_uri = False
         authentication = ApiKeyAuthentication()
+        authorization = Authorization()
+
+
+class PullModelResource(ModelResource):
+    class Meta:
+        queryset = PullModel.objects.all()
+        resource_name = 'pull'
+        include_resource_uri = False
+        authentication = Authentication()
         authorization = Authorization()

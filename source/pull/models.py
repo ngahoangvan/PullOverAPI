@@ -57,3 +57,12 @@ class PullImage(models.Model):
     order = models.BooleanField(default=False)
     class Meta:
         db_table = 'pull_image'
+
+class PullModel(models.Model):
+    name = models.CharField(max_length=255)
+    price = models.IntegerField()
+    description = models.TextField()
+    category = models.ForeignKey(Categories, on_delete=models.CASCADE)
+    image = models.TextField()
+    class Meta:
+        db_table = 'pull_model'
