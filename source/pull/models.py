@@ -1,5 +1,7 @@
 from datetime import datetime
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -53,10 +55,9 @@ class Colors(models.Model):
 
 
 class PullImage(models.Model):
-    image = models.TextField()
-    order = models.BooleanField(default=False)
     class Meta:
         db_table = 'pull_image'
+
 
 class PullModel(models.Model):
     name = models.CharField(max_length=255)
@@ -66,3 +67,13 @@ class PullModel(models.Model):
     image = models.TextField()
     class Meta:
         db_table = 'pull_model'
+
+
+class PullUrl(models.Model):
+    user = models.ForeignKey(User,
+                             on_delete=models.CASCADE,
+                             related_name='user')
+    url = models.TextField()
+    class Meta:
+        db_table = 'pull_url'
+        

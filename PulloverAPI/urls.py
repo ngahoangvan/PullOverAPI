@@ -22,7 +22,7 @@ from source.account.apis import (
     AuthenticationResource,
     UserResource,
 )
-from source.pull.apis import PullModelResource
+from source.pull.apis import PullModelResource, PullUrlResource
 
 v1_api = Api(api_name='v1')
 
@@ -32,6 +32,7 @@ v1_api.register(AuthenticationResource())
 
 #Api for PUll
 v1_api.register(PullModelResource())
+v1_api.register(PullUrlResource())
 
 urlpatterns = [
     url(r'admin/', admin.site.urls),
