@@ -2,13 +2,14 @@ import re
 from django.conf.urls import url
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
 from django.contrib.auth.password_validation import validate_password
 from django.core.validators import validate_email
 from tastypie.resources import ModelResource, ALL
 from tastypie.http import HttpUnauthorized, HttpForbidden
 from tastypie.authorization import Authorization
 from tastypie.authentication import Authentication, ApiKeyAuthentication
-# from tastypie.exceptions import BadRequest
+from tastypie.exceptions import ImmediateHttpResponse
 from tastypie.utils import trailing_slash
 from tastypie import fields
 from ..commons.custom_exception import CustomBadRequest
@@ -334,3 +335,35 @@ class RelationshipResource(ModelResource):
         return self.create_response(request, {
             'success': True
         })
+
+
+# class CORSResource(object):
+#     """
+#     Adds CORS headers to resources that subclass this.
+#     """
+#     def create_response(self, *args, **kwargs):
+#         response = super(CORSResource, self).create_response(*args, **kwargs)
+#         response['Access-Control-Allow-Origin'] = '*'
+#         response['Access-Control-Allow-Headers'] = 'Content-Type'
+#         return response
+
+#     def method_check(self, request, allowed=None):
+#         if allowed is None:
+#             allowed = []
+
+#         request_method = request.method.lower()
+#         allows = ','.join(map(str.upper, allowed))
+
+#         if request_method == 'options':
+#             response = HttpResponse(allows)
+#             response['Access-Control-Allow-Origin'] = '*'
+#             response['Access-Control-Allow-Headers'] = 'Content-Type'
+#             response['Allow'] = allows
+#             raise ImmediateHttpResponse(response=response)
+
+#         if not request_method in allowed:
+#             response = http.HttpMethodNotAllowed(allows)
+#             response['Allow'] = allows
+#             raise ImmediateHttpResponse(response=response)
+
+#         return request_method
